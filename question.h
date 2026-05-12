@@ -10,5 +10,5 @@ struct Question
 };
 
 //–â‘è‚Ì”z—ñ‚ð‚ ‚ç‚í‚·Œ^
-using QustionList = std::vector<Question>;
+using QuestionList = std::vector<Question>;
 
