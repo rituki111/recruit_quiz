@@ -152,7 +152,8 @@ QuestionList CreateHomophoneExam()
 			const char* kanji;    //漢字
 			const char* meaning;  //意味
 		} words[3];
-	} data[] = {
+	} data[] = 
+	{
 		{ "じき", {
 			{ "時期", "何かを行うとき、期間" },
 			{ "時機", "物事を行うのによい機会" }}},
@@ -234,4 +235,52 @@ QuestionList CreateHomophoneExam()
 
 	return questions;
 
+}
+
+/*
+  対義語の問題を作成する
+*/
+QuestionList CreateAntonymExam()
+{
+	const struct
+	{
+		const char* kanji[2];
+	} data[] =
+	{
+		{ "意図", "恣意(しい)" }, { "需要", "供給" },
+		{ "故意", "過失" }, { "曖昧", "明瞭" },
+		{ "緊張", "弛緩(しかん)" }, { "過疎", "過密" },
+		{ "栄転(えいてん)", "左遷" }, { "消費", "生産" },
+		{"異端", "正統" }, { "尊敬", "軽蔑(けいべつ)"},
+	};
+
+	constexpr int quizCount = 5;
+	QuestionList questions;
+	questions.reserve(quizCount);
+	const vector<int> indices = CreateRandomIndices(size(data));
+	random_device rd;
+
+	for (int i = 0; i < quizCount; i++)
+	{
+		//間違った番号をランダムに選ぶ
+		const int correctIndex = indices[i];
+		vector<int> answers = CreateWrongIndices(size(data), correctIndex);
+
+		//ランダムな位置を正しい番号で上書き
+		const int correctNo = uniform_int_distribution<>(1, 4)(rd);
+		answers[correctNo - 1] = correctIndex;
+
+		//問題文を作成
+		const int object = uniform_int_distribution<>(0, 1)(rd);
+		const int other = (object + 1) % 2;
+		string s = "「" + string(data[correctIndex].kanji[object]) +
+			"」の対義語として正しい番号を選べ";
+		for (int j = 0; j < 4; j++)
+		{
+			s += "\n  " + to_string(j + 1) + ":" + data[answers[j]].kanji[other];
+		}
+		questions.push_back({ s, to_string(correctNo) });
+	}
+
+	return questions;
 }
