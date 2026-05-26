@@ -340,7 +340,7 @@ QuestionList CreateSynonymExam()
 		
 		//問題文を作成
 		string s = "「" + string(data[correctIndex].kanji[object]) +
-			"」の対義語として正しい番号を選べ";
+			"」の類義語として正しい番号を選べ";
 		for (int j = 0; j < 4; j++)
 		{
 			if (j == correctNo - 1)
