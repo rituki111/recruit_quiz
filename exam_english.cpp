@@ -123,7 +123,7 @@ QuestionList CreateEnglishPhraseExam()
 		const char* example;  //英語の例文
 		const char* translation;  //例文の日本語翻訳
 		int blankCount;           //穴の候補の数
-		int blankOptions[3];      //穴の候補になる英語の位置
+		int blankOptions[5];      //穴の候補になる英語の位置
 	} data[] = {
 		{"too [A] to [B]", "とても[A]なので[B]できない",
 		 "The tea was too hot to drink.", "お茶が暑すぎて飲めなかった。",
@@ -139,6 +139,36 @@ QuestionList CreateEnglishPhraseExam()
 		 3, { 0, 1, 2}},
 		{"be not supposed to [A]", "[A]してはいけないことになっている",
 		 "You are not supposed to enter this room.", "この部屋に入ってはいけません。",
+		 3, { 2, 3, 4 }},
+		 {"be going to [A]", "[A]するつもりだ",
+		 "I am going to build a house.", "家を建てるつもりだ。",
+		 3, { 2, 3, 4 }},
+		 {"trun to [A] for [B]", "[A]に[B]を求める",
+		 "She turn to the friends for help.", "彼女は友達に助けを求めた。",
+		 3, { 1, 2, 5 }},
+		 {"it is not until [A] that [B]", "[A]して初めて[B]する",
+		 "It was not until dawn that the trouble solved.", "夜明けまで問題は解決しなかった",
+		 5, { 0, 1, 2, 3, 5 }},
+		 {"[A] as well as [B]", "[B]だけでなく[A]も",
+		 "He can Speak French as well as English.", "彼は英語だけでなくフランス語も話せる。",
+		 3, { 4, 5, 6 }},
+		 {"[A] remain [B]", "[A]が[B]のままでいる",
+		 "She remained silent.", "彼女は黙っていた。",
+		 1, { 1 }},
+		 {"both [A] and [B]", "[A]と[B]の両方とも",
+		 "This bag is both quality and cheap.", "このかばんは品質が良いうえに安い。",
+		 2, { 3, 5 }},
+		 {"either [A] or [B]", "[A]か[B]のどちらか",
+		 "Mom says that you can have either a dog or a cat.", "母は、犬か猫のどちらかなら飼ってもいいと言っている。",
+		 2, { 6, 9 }},
+		 {"neither [A] nor [B]", "[A]も[B]も両方ともない",
+		 "We have neither the time nor the resources", "我々には時間も資源もない。",
+		 2, { 2, 5 }},
+		 {"not only [A] but also [B]", "[A]だけでなく[B]も",
+		 "He likes not only movies but also books.", "彼は映画だけでなく本も好きだ。",
+		 4, { 2, 3, 5, 6 }},
+		 {"take care of [A]", "[A]の世話をする",
+		 "She always takes care of her sister.", "彼女はいつも妹の面倒を見ている。",
 		 3, { 2, 3, 4 }},
 	};
 
