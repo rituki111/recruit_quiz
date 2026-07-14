@@ -139,8 +139,8 @@ QuestionList CreatePrefecturesExam()
 				differentNames[correctIndex].second });
 		}
 
-	}
 	break;
+	}
 	}  //switch (type)
 
 	return questions;
