@@ -17,3 +17,7 @@ std::vector<int> CreateWrongIndices(int n, int correctIndex);
 //s •ª‰ğ‚·‚é•¶š—ñ
 //c ‹æØ‚è•¶š
 std::vector<std::string> Split(const std::string& s, char c);
+
+//SJIS”’l•¶š—ñ‚ğASCII”’l•¶š—ñ‚É•ÏŠ·‚·‚é
+//sjis•ÏŠ·Œ³‚Ìsjis•¶š—ñ
+std::string ConvertSjisNumberToAscii(const std::string& sjis);
