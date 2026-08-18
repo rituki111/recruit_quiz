@@ -4,6 +4,7 @@
 #include "exam_science.h"
 #include "exam_geography.h"
 #include "exam_politics.h"
+#include "exam_economics.h"
 #include "utility.h"
 #include <iostream>
 #include <string>
@@ -114,7 +115,7 @@ int main()
 
 	cout << "[リクルート試験対策クイズ]\n";
 
-	cout << "教科を選んでください\n1 = 数学\n2 = 国語\n3 = 英語\n4 = 理科\n5 = 地理\n6 = 政治\n";
+	cout << "教科を選んでください\n1 = 数学\n2 = 国語\n3 = 英語\n4 = 理科\n5 = 地理\n6 = 政治\n7 = 経済\n";
 	int subject;
 	cin >> subject;
 	if (subject == 2)
@@ -147,6 +148,10 @@ int main()
 	{
 		questions = CreatePoliticsExam();
 	}
+	else if (subject == 7)
+	{
+		questions = CreateEconomicsExam();
+	}
 
 	for (const auto& e : questions)
 	{
@@ -166,9 +171,38 @@ int main()
 		{
 			cout << "正解！\n";
 		}
-		else
+		else if (e.b.empty())
 		{
+			//答えが1つだけの場合
 			cout << "間違い！正解は" << e.a << "\n";
 		}
+		else
+		{
+			//答えが複数ある場合、いずれかと一致すれば正解とする
+			bool isMatch = false;
+			for (const auto& b : e.b)
+			{
+				if (answer == b)
+				{
+					isMatch = true;  //一致する答えが見つかった
+					break;
+				}
+			}
+
+			//比較結果を出力
+			if (isMatch)
+			{
+				cout << "正解！\n";
+			}
+			else
+			{
+				cout << "間違い！　正解は" << e.a << "(または";
+				for (auto& b : e.b)
+				{
+					cout << "、" << b;
+				}
+				cout << ")\n";
+			}
+		}  //if answer == e.a
 	}  //for question
 }
